@@ -1,0 +1,72 @@
+
+services:
+  flashsale-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flashsale-app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: flashsale_db
+      INVENTORY_SERVICE_URL: http://inventory-service:3003/api/inventory
+    depends_on:
+      - inventory-service
+
+  catalog-service:
+    build:
+      context: ./catalog-service
+    container_name: catalog-service
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: flashsale_db
+
+  cart-service:
+    build:
+      context: ./cart-service
+    container_name: cart-service
+    ports:
+      - "3002:3002"
+    environment:
+      PORT: 3002
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: flashsale_db
+
+ 
+  inventory-service:
+    build:
+      context: ./inventory-service
+    container_name: inventory-service
+    ports:
+      - "3003:3003"
+    environment:
+      PORT: 3003
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: ""
+      DB_NAME: flashsale_db
+      REDIS_URL: redis://redis:6379
+      REDIS_TTL: 10
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: flashsale-redis-compose
+    
+

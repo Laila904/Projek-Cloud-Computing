@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashSale — Belanja Hemat</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="/">Flash<span>Sale</span></a>
+    <div class="search">
+      <input id="searchInput" type="search"
+             placeholder="Cari produk favoritmu...">
+      <button id="searchButton">Cari</button>
+    </div>
+    <button id="cartButton" class="cart-button">
+      🛒 Keranjang <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">PROMO HARI INI</span>
+        <h1>Flash Sale!</h1>
+        <p>Produk favorit, harga hemat. Jangan sampai kehabisan!</p>
+        <a href="#products" class="hero-link">Belanja sekarang ↓</a>
+      </div>
+      <div class="hero-emoji" aria-hidden="true">🛍️</div>
+    </section>
+
+    <section class="benefits">
+      <div>⚡ <span>Promo pilihan</span></div>
+      <div>📦 <span>Stok terpantau</span></div>
+      <div>🔒 <span>Checkout terkontrol</span></div>
+    </section>
+
+    <section id="products" class="products-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PILIHAN UNTUKMU</p>
+          <h2>Produk Flash Sale</h2>
+        </div>
+        <span id="productCount" class="muted">Memuat produk...</span>
+      </div>
+
+      <div id="productGrid" class="product-grid">
+        <p>Memuat produk...</p>
+      </div>
+      <p id="productMessage" class="message" role="status"></p>
+    </section>
+
+    <section id="cartSection" class="cart-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PESANANMU</p>
+          <h2>Keranjang Belanja</h2>
+        </div>
+      </div>
+
+      <div id="cartItems" class="cart-items">
+        <p class="muted">Keranjang masih kosong.</p>
+      </div>
+
+      <div class="cart-summary">
+        <div>
+          <span class="muted">Total belanja</span>
+          <strong id="cartTotal">Rp0</strong>
+        </div>
+        <button id="checkoutButton" class="primary-button">
+          Checkout sekarang
+        </button>
+      </div>
+      <p id="cartMessage" class="message" role="status"></p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>FlashSale</strong>
+    <p>Demo e-commerce untuk praktikum Cloud Computing.</p>
+  </footer>
+</body>
+</html>
